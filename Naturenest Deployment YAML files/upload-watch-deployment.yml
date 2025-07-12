@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: upload
-          image: naturenest-upload:latest
+          image: omkarkhamkar/naturenest_web:upload
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
         - name: watch
-          image: naturenest-watch:latest
+          image: omkarkhamkar/naturenest_web:watch
           imagePullPolicy: Never
           ports:
             - containerPort: 5001
