@@ -32,9 +32,16 @@ The Docker images successfully pushed to Docker Hub and is now available for dep
 
 
 4. Service Discovery and Load Balancing
-   In our project, we created Kubernetes Service resources to expose each microservice appropriately. The watch, upload, and MySQL database services were exposed internally using ClusterIP for seamless inter-service communication within the cluster. The NGINX service, acting as a reverse proxy, was exposed externally using a NodePort to allow users to access the application through a browser. We verified inter-service communication by checking DNS resolution and pod logs, and confirmed external access by successfully accessing the NGINX endpoint in the browser.
+   
+   In our project, we created Kubernetes Service resources to expose each microservice appropriately. The watch, upload, and MySQL database services were exposed internally using ClusterIP for seamless inter-service communication within the cluster. The NGINX service, acting as a reverse proxy, was exposed externally using a NodePort to allow users to access the application through a browser. 
 
 
+<img width="960" height="540" alt="Screenshot 2025-07-12 135721" src="https://github.com/user-attachments/assets/522cb24c-5273-4351-8c4f-44e050d4c9a5" />
+
+We verified inter-service communication by checking DNS resolution and pod logs, and confirmed external access by successfully accessing the NGINX endpoint in the browser.
+
+
+<img width="960" height="540" alt="Screenshot 2025-07-12 135430" src="https://github.com/user-attachments/assets/32cf99de-ed08-4b2a-b881-bd00e548b023" />
 
 
 
