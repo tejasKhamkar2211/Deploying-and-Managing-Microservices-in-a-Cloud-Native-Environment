@@ -38,6 +38,14 @@ spec:
           volumeMounts:
             - name: shared-storage
               mountPath: /shared_storage
+          
+          resources:
+           requests:
+            cpu: 100m
+            memory: 128Mi
+           limits:
+            cpu: 200m
+            memory: 256Mi
       volumes:
         - name: shared-storage
           hostPath:
@@ -79,7 +87,14 @@ spec:
               value: "image_gallery"
           volumeMounts:
             - name: shared-storage
-              mountPath: /shared_storage
+               mountPath: /shared_storage
+          resources:
+           requests:
+            cpu: 100m
+            memory: 128Mi
+           limits:
+            cpu: 200m
+            memory: 256Mi
       volumes:
         - name: shared-storage
           hostPath:
