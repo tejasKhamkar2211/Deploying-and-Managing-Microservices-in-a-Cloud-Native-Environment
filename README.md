@@ -43,7 +43,13 @@ We verified inter-service communication by checking DNS resolution and pod logs,
 
 <img width="960" height="540" alt="Screenshot 2025-07-12 135430" src="https://github.com/user-attachments/assets/32cf99de-ed08-4b2a-b881-bd00e548b023" />
 
+5. Scaling
 
+In our project, we configured the Horizontal Pod Autoscaler (HPA) for key microservices including NGINX, upload, and watch, to enable dynamic scaling based on CPU usage. For each service, we set a target CPU utilization threshold (e.g., 50%) to maintain performance under varying load. To simulate high traffic, we generated artificial load using tools like curl in a loop from within the cluster. We observed the autoscaling behavior through kubectl get hpa, confirming that each service scaled its pod replicas automatically in response to increased resource consumption.
 
+<img width="960" height="540" alt="Screenshot 2025-07-12 135721" src="https://github.com/user-attachments/assets/7581b5a0-a6c5-4665-894f-1dca3ddcd675" />
 
+To verify that autoscaling was working in our project, we monitored the Horizontal Pod Autoscaler using kubectl get hpa, observed the increase in pod replicas when CPU usage crossed the defined threshold, and confirmed that the HPA automatically scaled the affected microservices (like NGINX, upload, and watch) based on the generated load.
+
+<img width="960" height="540" alt="Screenshot 2025-07-12 143127" src="https://github.com/user-attachments/assets/2215af06-f633-4f3c-acd5-680eb392931c" />
 
