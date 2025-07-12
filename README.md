@@ -10,7 +10,8 @@ storage
 1. Kubernetes Setup
    We have installed and used Kubernetes locally to deploy and manage our containerized application.
 
-<img width="960" height="540" alt="Screenshot 2025-07-12 103712" src="https://github.com/user-attachments/assets/5009b130-da97-4c70-9291-c9393f31fd61" />
+<img width="960" height="540" alt="Screenshot 2025-07-11 195942" src="https://github.com/user-attachments/assets/8148983d-94d8-4f5e-83ae-5ce77fc20901" />
+
 
 
 2. Containerization and Docker
