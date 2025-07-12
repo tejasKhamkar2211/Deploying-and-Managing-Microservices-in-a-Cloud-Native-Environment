@@ -54,4 +54,10 @@ To verify that autoscaling was working in our project, we monitored the Horizont
 <img width="960" height="540" alt="Screenshot 2025-07-12 143127" src="https://github.com/user-attachments/assets/2215af06-f633-4f3c-acd5-680eb392931c" />
 
 
+<img width="960" height="540" alt="Screenshot 2025-07-12 151557" src="https://github.com/user-attachments/assets/9ab7d584-d05b-45b1-b9bc-671f6f01f86a" />
+
+
+
+
+
 
