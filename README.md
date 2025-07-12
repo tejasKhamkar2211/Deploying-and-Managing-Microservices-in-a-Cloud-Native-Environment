@@ -47,14 +47,21 @@ We verified inter-service communication by checking DNS resolution and pod logs,
 
 In our project, we configured the Horizontal Pod Autoscaler (HPA) for key microservices including NGINX, upload, and watch, to enable dynamic scaling based on CPU usage. For each service, we set a target CPU utilization threshold (e.g., 50%) to maintain performance under varying load. To simulate high traffic, we generated artificial load using tools like curl in a loop from within the cluster. We observed the autoscaling behavior through kubectl get hpa, confirming that each service scaled its pod replicas automatically in response to increased resource consumption.
 
-<img width="960" height="540" alt="Screenshot 2025-07-12 135721" src="https://github.com/user-attachments/assets/7581b5a0-a6c5-4665-894f-1dca3ddcd675" />
+<img width="960" height="540" alt="Screenshot 2025-07-12 152434" src="https://github.com/user-attachments/assets/1d708137-d1f6-43d3-a8bc-d433a79f3cf1" />
+
 
 To verify that autoscaling was working in our project, we monitored the Horizontal Pod Autoscaler using kubectl get hpa, observed the increase in pod replicas when CPU usage crossed the defined threshold, and confirmed that the HPA automatically scaled the affected microservices (like NGINX, upload, and watch) based on the generated load.
 
 <img width="960" height="540" alt="Screenshot 2025-07-12 143127" src="https://github.com/user-attachments/assets/2215af06-f633-4f3c-acd5-680eb392931c" />
 
 
+In our project, we implemented persistent storage by creating a Persistent Volume (PV) and a Persistent Volume Claim (PVC) specifically for the MySQL database. We modified the database configuration to use this volume for storing its data. This ensures that the upload and watch microservices can consistently read and write image metadata to the database. We verified persistence by inserting and retrieving data through the services, and confirmed that the data remains intact even after pod restarts.
 
+
+<img width="960" height="540" alt="Screenshot 2025-07-12 153141" src="https://github.com/user-attachments/assets/de43252f-7565-4b94-ab43-e7f63df82098" />
+
+
+<img width="960" height="540" alt="Screenshot 2025-07-12 155109" src="https://github.com/user-attachments/assets/1385283a-bdaf-4f91-ab6b-09a26da963f3" />
 
 
 
