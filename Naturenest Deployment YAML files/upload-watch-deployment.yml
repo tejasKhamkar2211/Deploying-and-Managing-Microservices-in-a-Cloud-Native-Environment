@@ -1,0 +1,87 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upload
+  namespace: naturenest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: upload
+  template:
+    metadata:
+      labels:
+        app: upload
+    spec:
+      containers:
+        - name: upload
+          image: naturenest-upload:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MYSQL_HOST
+              value: "mysql"
+            - name: MYSQL_USER
+              value: "user"
+            - name: MYSQL_PASSWORD
+              value: "pass"
+            - name: MYSQL_DB
+              value: "image_gallery"
+            - name: AWS_ACCESS_KEY_ID
+              value: "------------------"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "----------------------------------"
+            - name: S3_BUCKET
+              value: "tejas-new-image-bucket"
+          volumeMounts:
+            - name: shared-storage
+              mountPath: /shared_storage
+      volumes:
+        - name: shared-storage
+          hostPath:
+            path: /home/ubuntu/shared_storage
+            type: Directory
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watch
+  namespace: naturenest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: watch
+  template:
+    metadata:
+      labels:
+        app: watch
+    spec:
+      containers:
+        - name: watch
+          image: naturenest-watch:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5001
+          env:
+            - name: MYSQL_HOST
+              value: "mysql"
+            - name: MYSQL_USER
+              value: "user"
+            - name: MYSQL_PASSWORD
+              value: "pass"
+            - name: MYSQL_DB
+              value: "image_gallery"
+          volumeMounts:
+            - name: shared-storage
+              mountPath: /shared_storage
+      volumes:
+        - name: shared-storage
+          hostPath:
+            path: /home/ubuntu/shared_storage
+            type: Directory
