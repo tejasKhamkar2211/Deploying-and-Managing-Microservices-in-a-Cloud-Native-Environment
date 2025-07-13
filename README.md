@@ -46,7 +46,7 @@ Stores structured data like image id, URL, and uploaded_at timestamp.
 
 Ensures data is not lost even after pod restarts, thanks to PV/PVC.
 
-![Slide1](https://github.com/user-attachments/assets/7002b1de-c552-4542-a033-dacf9993de2b)
+
 
 
 f) Response is returned
@@ -54,6 +54,8 @@ Data flows back through:
 → Watch/Upload Service
 → Nginx
 → User's browser (as image upload confirmation or image gallery)
+
+![Slide1](https://github.com/user-attachments/assets/7002b1de-c552-4542-a033-dacf9993de2b)
 
 1. Kubernetes Setup
    We have installed and used Kubernetes locally to deploy and manage our containerized application.
