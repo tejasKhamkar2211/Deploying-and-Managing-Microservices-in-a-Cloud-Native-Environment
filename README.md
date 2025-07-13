@@ -7,6 +7,54 @@ Learn how to:
  Manage Kubernetes deployments, services, autoscaling, and persistent 
 storage
 
+🌿 NatureNest Application Flow
+a) User sends a request
+The user opens the browser and accesses the application through the Nginx reverse proxy via the NodePort (e.g., http://<EC2-IP>:30080).
+
+b) Request reaches Nginx (Frontend Service)
+The Nginx container receives the HTTP request and forwards it to the respective internal microservice (upload or watch) using their internal ClusterIP services.
+
+Nginx forwards request to Upload or Watch microservice
+
+If the user is uploading an image, the request goes to the Upload Service (upload pod on port 5000).
+
+If the user wants to view images, the request goes to the Watch Service (watch pod on port 5001).
+
+c) Upload Service Logic
+
+Receives image and metadata from user.
+
+Stores the image in the S3 bucket (e.g., tejas-new-image-bucket).
+
+Stores the image URL and timestamp in the MySQL database (table: images).
+
+Saves metadata to the /shared_storage volume temparary.
+
+d) Watch Service Logic
+
+Receives request to show uploaded images.
+
+Queries the MySQL database for image URLs and timestamps.
+
+Displays the image gallery using the data retrieved from MySQL.
+
+e) Database (MySQL)
+
+Running in a pod with a Persistent Volume Claim (PVC).
+
+Stores structured data like image id, URL, and uploaded_at timestamp.
+
+Ensures data is not lost even after pod restarts, thanks to PV/PVC.
+
+![Slide1](https://github.com/user-attachments/assets/7002b1de-c552-4542-a033-dacf9993de2b)
+
+
+f) Response is returned
+Data flows back through:
+→ Watch/Upload Service
+→ Nginx
+→ User's browser (as image upload confirmation or image gallery)
+
 1. Kubernetes Setup
    We have installed and used Kubernetes locally to deploy and manage our containerized application.
 
